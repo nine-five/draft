@@ -1,0 +1,62 @@
+body{ 
+  background-color: #000;
+  color: rgb(57,57,57);
+  margin: 0;
+  font-size: 14px;
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+/* top navigator */
+.top {
+  background-color: rgb(30,99,140);
+  /*box-shadow: 0 0 0 1px rgba(0,0,0,.1);*/
+  height: 2.5em;
+}
+
+/* kanban's container */
+.board{
+  background-color: rgb(35,113,159);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+  position: absolute;
+  top: 2.5em;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* group */
+.board > .group{
+  background-color: rgb(219,219,219);
+  float: left;
+  min-width: 20em;
+  margin: 10px 5px 10px 5px;
+}
+.board > .group:first-child {
+  margin-left: 10px;
+}
+
+/* group's header */
+.board > .group > .header{
+  min-height: 1.5em;
+}
+.board > .group > .header > h2{
+  padding: .2em;
+  margin: 0;
+  font-size: 1.2em;
+}
+
+/* cards */
+.board > .group > .cards{
+
+}
+
+/* card */
+.board > .group > .cards > .card{
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+  min-height: 3em;
+  padding: .2em;
+}
+.board > .group > .cards > .card > .stat{
+  color: rgb(179,179,179);
+}

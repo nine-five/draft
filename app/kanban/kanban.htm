@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kanban</title>
+
+  <!-- Bootstrap -->
+  <link href="../../libs/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="kanban.css" rel="stylesheet">
+</head>
+<body>
+  <div class="top">Top</div>
+  <div class="board">
+    <div class="group">
+      <div class="header"><h2>Thinking</h2></div>
+      <div class="cards">
+        <div class="card">搭建源码服务器</div>
+        <div class="card" draggable="true">注册域名</div>
+        <div class="card">看板页面简易版</div>
+      </div>
+    </div>
+    <div class="group">
+      <div class="header"><h2>Doing</h2></div>
+      <div class="cards">
+        <div class="card">Task21</div>
+        <div class="card">Task22</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="../../libs/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script src="../../libs/angularjs/1.2.16/angular.min.js"></script>
+  <script src="kanban.js"></script>
+</body>
+</html>

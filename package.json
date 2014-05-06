@@ -1,0 +1,14 @@
+{
+  "name": "simter",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Simple and better",
+  "repository": "https://github.com/nine-five/draft",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.6.1"
+  },
+  "scripts": {
+    "start": "http-server -p 8000"
+  }
+}

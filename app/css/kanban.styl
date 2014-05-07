@@ -1,0 +1,63 @@
+@import 'reset'
+@import 'fn'
+
+/* 变量定义 */
+main_bg_color = rgb(35,113,159)
+top_height = 2.5em																// 顶部高度
+top_bg_color = rgb(30,99,140)											// 顶部背景色
+kb_bg_color = rgb(35,113,159)											// 看板背景色
+kb_group_bg_color = rgb(219,219,219)							// 分组背景色
+kb_group_header_bg_color = rgb(219,219,219)				// 分组头部背景色
+kb_group_card_bg_color = #fff											// 任务背景色
+kb_group_card_color = rgb(57,57,57)												// 任务主字体颜色
+kb_group_card_color1 = darken(kb_group_card_color, 50%)	// 任务次字体颜色
+
+body 
+  background-color main_bg_color
+
+/* top navigator */
+.top
+	background-color top_bg_color
+	height top_height
+
+/* kanban's container */
+.kb
+	background-color kb_bg_color
+	box-shadow 0 0 0 1px rgba(0,0,0,.1)
+	position absolute
+	top top_height
+	bottom 0
+	left 0
+	right 0
+
+	> .group
+		background-color kb_group_bg_color
+		border-radius 5px
+		float left
+		min-width 20em
+		margin 10px 5px 10px 5px
+		&:first-child
+			margin-left 10px
+
+		> .header
+			//background-color kb_group_header_bg_color
+			min-height 2em
+			padding 2px
+
+			> h2
+				padding .2em
+				margin 0
+				font-size 1.2em
+				font-weight bold
+
+		> .cards
+
+			> .card
+				background-color kb_group_card_bg_color
+				color kb_group_card_color
+				box-shadow 0 0 0 1px rgba(0,0,0,.1)
+				min-height 3em
+				padding .2em
+
+				> .stat
+					color rgb(179,179,179)

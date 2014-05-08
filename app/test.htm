@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Try Kanban</title>
+  <style type="text/css">
+    html, body{
+      height: 100%;width: 100%;
+      margin: 0;padding: 0;
+      /*overflow: hidden;*/
+    }
+    .scrollbar {-webkit-overflow-scrolling:touch}
+    .scrollbar::-webkit-scrollbar{height:5px;width:5px}
+    .scrollbar::-webkit-scrollbar-button:start:decrement,.scrollbar::-webkit-scrollbar-button:end:increment{
+      background:transparent;display:none
+    }
+    .scrollbar::-webkit-scrollbar-track-piece{background:#d0d0d0}
+    .scrollbar::-webkit-scrollbar-track-piece:vertical:start{
+      border-top-left-radius:2px;border-top-right-radius:2px;border-bottom-right-radius:0;border-bottom-left-radius:0
+    }
+    .scrollbar::-webkit-scrollbar-track-piece:vertical:end{
+      border-top-left-radius:0;border-top-right-radius:0;border-bottom-right-radius:5px;border-bottom-left-radius:5px
+    }
+    .scrollbar::-webkit-scrollbar-track-piece:horizontal:start{
+      border-top-left-radius:5px;border-top-right-radius:0;border-bottom-right-radius:0;border-bottom-left-radius:5px
+    }
+    .scrollbar::-webkit-scrollbar-track-piece:horizontal:end{
+      border-top-left-radius:0;border-top-right-radius:5px;border-bottom-right-radius:5px;border-bottom-left-radius:0
+    }
+    .scrollbar::-webkit-scrollbar-thumb:vertical,.scrollbar::-webkit-scrollbar-thumb:horizontal{
+      background:#999;border-radius:2px;display:block;height:50px
+    }
+
+    .vlayout {
+      display: -webkit-box;
+      display: -moz-box;
+      display: box;
+      -webkit-box-orient: vertical;
+      -webkit-box-pack: top;
+      -webkit-box-align: left;
+       display: -webkit-box;
+      display: -moz-box;
+      display: box;
+      -webkit-box-orient: vertical;
+      -webkit-box-pack: top;
+      -webkit-box-align: left;
+    }
+    .vlayout>.flex {
+      -webkit-box-flex: 1;
+    }
+
+    .top{
+      height:30px;
+      background-color: green;
+    }
+    .kb{
+      overflow-hidden;
+      background-color: #2b2b2b;
+      position:relative;
+    }
+    .cram{
+      position:absolute;top:5px;bottom:5px;left:0;right:0;
+    }
+
+    .group{
+      box-sizing: border-box;
+      max-height: 100%;
+      background-color: #ccc;
+      float: left;
+      width:300px;
+      margin-left: 5px;
+    }
+    .tasks{
+      width: 100%;
+      overflow: auto; 
+      box-sizing: border-box;
+      min-height: 2em;
+    }
+    .task{
+      background-color: #ccc;height: 100px;
+    }
+    .header{
+      background-color: #666;
+      height: 30px;
+      width: 100%;
+      line-height: 30px;
+    }
+    .bottom{
+      background-color: #666;
+      height: 50px;
+      width: 100%;
+      text-align: center;
+      line-height: 50px;
+    }
+    .clear{clear:both}
+    .clearfix:after{clear:both;content:".";display:block;height:0;overflow:hidden;visibility:hidden}
+  </style>
+</head>
+<body class="scrollbar vlayout">
+  <div class="top">Top</div>
+  <div class="kb flex">
+    <div class="cram">
+      <div class="group vlayout">
+        <div class="header">Name</div>
+        <div class="tasks scrollbar flex" id="tasks">
+          <div class="task">Task1</div>
+          <div class="task">Task2</div>
+          <div class="task">Task3</div>
+          <div class="task">Task4</div>
+        </div>
+        <div class="bottom"><a href="#" onclick="add()">+ Add</a>    <a href="#" onclick="remove_()">- Remove</a></div>
+      </div>
+      <div class="group vlayout" style="">
+        <div class="header">Name</div>
+        <div class="tasks scrollbar flex" id="tasks">
+          <div class="task">Task1</div>
+          <div class="task">Task2</div>
+        </div>
+        <div class="bottom"><a href="#" onclick="add()">+ Add</a>    <a href="#" onclick="remove_()">- Remove</a></div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+      var tasks = document.getElementById("tasks");
+      function add(){
+        console.log("add");
+        var n = document.createElement("div");
+        n.innerText = "Task";
+        n.className = "task";
+        tasks.appendChild(n);
+        return false;
+      }
+      function remove_(){
+        console.log("remove");
+        var n = tasks.children[tasks.children.length - 1];
+        n && tasks.removeChild(n);
+        return false;
+      }
+  </script>
+</body>
+</html>

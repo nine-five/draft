@@ -3,3 +3,75 @@ border-radius()
   -webkit-border-radius: arguments
   -moz-border-radius: arguments
   border-radius: arguments
+
+
+/* 弹性盒模型的垂直布局 */
+vlayout()
+	/* webkit */
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-pack: top;
+	-webkit-box-align: left;
+	/* moz */
+	display: -moz-box;
+	-moz-box-orient: vertical;
+	-moz-box-pack: top;
+	-moz-box-align: left;
+	/* Standard */
+	display: box;
+	box-orient: vertical;
+	pack: top;
+	align: left;
+box-flex()
+		-webkit-box-flex arguments
+		-moz-box-flex arguments
+		box-flex arguments
+.vlayout
+	vlayout 0
+.vlayout > .flex
+	box-flex 1
+
+/* position */
+.relative{position:relative}
+.absolute{position:absolute}
+
+/* show/hide */
+.hide{display:none}
+.show{display:block}
+
+/* normal */
+.bold{font-weight:bold}
+.align.center{text-align:center}
+.align.left{text-align:left}
+.align.right{text-align:right}
+.pointer{cursor:pointer}
+.underline{text-decoration:underline}
+.wrapword{word-wrap:break-word}
+.ellipsis{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cram{position:absolute;top:0;bottom:0;left:0;right:0}
+.hscroll{overflow-y:hidden;overflow-x:auto}
+.vscroll{overflow-x:hidden;overflow-y:auto}
+.noscroll{overflow:hidden}
+
+/* redefine scrollbar style */
+.scrollbar {-webkit-overflow-scrolling:touch}
+.scrollbar::-webkit-scrollbar{height:6px;width:6px}
+.scrollbar::-webkit-scrollbar-button:start:decrement,.scrollbar::-webkit-scrollbar-button:end:increment{
+  background:transparent;display:none
+}
+.scrollbar::-webkit-scrollbar-track-piece{background:#d0d0d0}
+.scrollbar::-webkit-scrollbar-track-piece:vertical:start{
+  border-top-left-radius:2px;border-top-right-radius:2px;border-bottom-right-radius:0;border-bottom-left-radius:0
+}
+.scrollbar::-webkit-scrollbar-track-piece:vertical:end{
+  border-top-left-radius:0;border-top-right-radius:0;border-bottom-right-radius:5px;border-bottom-left-radius:5px
+}
+.scrollbar::-webkit-scrollbar-track-piece:horizontal:start{
+  border-top-left-radius:5px;border-top-right-radius:0;border-bottom-right-radius:0;border-bottom-left-radius:5px
+}
+.scrollbar::-webkit-scrollbar-track-piece:horizontal:end{
+  border-top-left-radius:0;border-top-right-radius:5px;border-bottom-right-radius:5px;border-bottom-left-radius:0
+}
+.scrollbar::-webkit-scrollbar-thumb:vertical,.scrollbar::-webkit-scrollbar-thumb:horizontal{
+  background:#999;border-radius:2px;display:block;height:50px
+}

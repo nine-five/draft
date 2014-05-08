@@ -11,54 +11,191 @@ body {
   font-size: 16px;
   font-family: 'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
 }
-/* 变量定义 */
-body {
-  background-color: #23719f;
+.vlayout {
+/* webkit */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: top;
+  -webkit-box-align: left;
+/* moz */
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-pack: top;
+  -moz-box-align: left;
+/* Standard */
+  display: box;
+  box-orient: vertical;
+  pack: top;
+  align: left;
 }
-/* top navigator */
-.top {
-  background-color: #1e638c;
-  height: 2.5em;
+.vlayout > .flex {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
 }
-/* kanban's container */
-.kb {
-  background-color: #23719f;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+.relative {
+  position: relative;
+}
+.absolute {
   position: absolute;
-  top: 2.5em;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.bold {
+  font-weight: bold;
+}
+.align.center {
+  text-align: center;
+}
+.align.left {
+  text-align: left;
+}
+.align.right {
+  text-align: right;
+}
+.pointer {
+  cursor: pointer;
+}
+.underline {
+  text-decoration: underline;
+}
+.wrapword {
+  word-wrap: break-word;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cram {
+  position: absolute;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
 }
-.kb > .group {
+.hscroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.vscroll {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.noscroll {
+  overflow: hidden;
+}
+.scrollbar {
+  -webkit-overflow-scrolling: touch;
+}
+.scrollbar::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.scrollbar::-webkit-scrollbar-button:start:decrement,
+.scrollbar::-webkit-scrollbar-button:end:increment {
+  background: transparent;
+  display: none;
+}
+.scrollbar::-webkit-scrollbar-track-piece {
+  background: #d0d0d0;
+}
+.scrollbar::-webkit-scrollbar-track-piece:vertical:start {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.scrollbar::-webkit-scrollbar-track-piece:vertical:end {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.scrollbar::-webkit-scrollbar-track-piece:horizontal:start {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 5px;
+}
+.scrollbar::-webkit-scrollbar-track-piece:horizontal:end {
+  border-top-left-radius: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 0;
+}
+.scrollbar::-webkit-scrollbar-thumb:vertical,
+.scrollbar::-webkit-scrollbar-thumb:horizontal {
+  background: #999;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  display: block;
+  height: 50px;
+}
+body {
+  background-color: #23719f;
+  overflow: hidden;
+}
+/* top navigator */
+.top {
+  box-sizing: border-box;
+  background-color: #1e638c;
+  height: 2.5em;
+  line-height: 2.5em;
+  vertical-align: middle;
+}
+/* kanban's container */
+.kb {
+  box-sizing: border-box;
+  background-color: #23719f;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+  position: relative;
+  min-height: 10em;
+}
+.kb >.cram {
+  margin: 8px 8px 8px 0;
+}
+.kb .group {
+  box-sizing: border-box;
+  max-height: 100%;
   background-color: #dbdbdb;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  width: 20em;
+  margin-left: 8px;
   float: left;
-  min-width: 20em;
-  margin: 10px 5px 10px 5px;
 }
-.kb > .group:first-child {
-  margin-left: 10px;
-}
-.kb > .group > .header {
+.kb .group > .header {
   min-height: 2em;
   padding: 2px;
 }
-.kb > .group > .header > h2 {
+.kb .group > .header > h2 {
   padding: 0.2em;
   margin: 0;
   font-size: 1.2em;
   font-weight: bold;
 }
-.kb > .group > .cards > .card {
+.kb .group > .cards {
+  overflow: auto;
+}
+.kb .group > .cards > .card {
   background-color: #fff;
   color: #393939;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
   min-height: 3em;
   padding: 0.2em;
 }
-.kb > .group > .cards > .card > .stat {
+.kb .group > .cards > .card > .stat {
   color: #b3b3b3;
+}
+.kb .group > .bottom {
+  height: 3em;
+  text-align: center;
+  line-height: 3em;
 }

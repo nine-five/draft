@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Try Flexbox</title>
+  <link href="reset.css" rel="stylesheet">
+  <style type="text/css">
+    body{
+      background-color: black;
+      color: white;
+    }
+    pre{
+      margin: 0px;
+      padding: 5px 10px;
+      background-color: #2b2b2b;
+      position: absolute;
+      bottom: 0;
+    }
+    a{color: blue}
+
+    .detail{
+      background-color: #111;
+      flex: 1;
+    }
+    .one{
+      min-height: 3em;
+    }
+    .detail>:nth-child(odd){
+      background-color: #222;
+    }
+    .detail>:nth-child(even){
+      background-color: #333;
+    }
+    .header{
+      background-color: #666;
+      height: 2em;
+      line-height: 2em;
+    }
+    .bottom{
+      background-color: #666;
+      height: 2em;
+      text-align: center;
+      line-height: 2em;
+    }
+
+    .c{
+      background-color: #ccc;
+      /*float: left;*/
+      margin: 0 10px;
+      border: 1px solid #666;
+    }
+
+    .hw{
+      height: 12em;
+      width: 12em;
+    }
+
+    .w{
+      width: 12em;
+      max-height: 12em;
+    }
+
+    .fc{
+      /* webkit */
+      display: -webkit-flex;
+      -webkit-flex-direction: column;
+      -webkit-flex-wrap: nowrap;
+      -webkit-justify-content: flex-start;
+      -webkit-align-items: flex-start;
+
+      /* moz */
+      display: -moz-flex;
+      -moz-flex-direction: column;
+      -moz-flex-wrap: nowrap;
+      -moz-justify-content: flex-start;
+      -moz-align-items: flex-start;
+
+      /* standard: IE11+, Firefox29+, Chrome34+ */
+      display: inline-flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    .fi{
+      align-self: stretch;
+    }
+    .fii{
+      flex: 1;
+    }
+  </style>
+</head>
+<body class="clearfix">
+  <pre class="h">弹性模型的垂直布局演示
+> OK: 伸缩容器设置固定高度；伸缩项目上下固定高度，中间自动填满其余空间
+> ERROR: 伸缩容器设置最大高度；伸缩项目上下固定高度，中间自动填满其余空间
+</pre>
+  <div class="c hw fc">
+    <div class="fi header">Name</div>
+    <div class="fi fii detail vscroll">
+      <div class="one">容器设置固定高度 内容没有溢出</div>
+      <div class="one">Test Content Content Content Content</div>
+    </div>
+    <div class="fi bottom"><a href="#" class="add">+ Add</a>    <a href="#" class="remove">- Remove</a></div>
+  </div>
+
+  <div class="c hw fc">
+    <div class="fi header">Name</div>
+    <div class="fi fii detail vscroll">
+      <div class="one">容器设置固定高度 内容已经溢出</div>
+      <div class="one">内容已经溢出</div>
+      <div class="one">内容已经溢出</div>
+      <div class="one">内容已经溢出</div>
+    </div>
+    <div class="fi bottom"><a href="#" class="add">+ Add</a>    <a href="#" class="remove">- Remove</a></div>
+  </div>
+
+  <div class="c w fc clearfix relative" style="min-height:6em;">
+    <div class="fi header" style="flex:none">Name</div>
+    <div class="fi detail vscroll" style="flex: auto; /*ie need max-height: 8em;*/">
+        <div class="one">容器设置最大高度</div>
+        <div class="one">容器设置最大高度</div>
+        <div class="one">容器设置最大高度</div>
+        <div class="one">容器设置最大高度</div>
+    </div>
+    <div class="fi bottom" style="flex:none"><a href="#" class="add">+ Add</a>    <a href="#" class="remove">- Remove</a></div>
+  </div>
+  <script src="../../libs/jquery/2.1.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    $("body").on("click", ".add", function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      console.log("add");
+      $(this).closest(".fc").find(".detail")
+        .append('<div class="one">Test Content</div>');
+      return false;
+    });
+
+    $("body").on("click", ".remove", function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      console.log("remove");
+      $(this).closest(".fc").find(".detail>:last").remove();
+      return false;
+    });
+
+    // IE11需要特殊设置 cards 的 max-height
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf("trident") != -1 || ua.indexOf("msie") != -1) {
+      console.log("IE browser userAgent = " + navigator.userAgent);
+      var $kb = $("body");
+      var sh = 0;
+      $(window).resize(function resize(){
+        console.log("window resize");
+        var th = $kb.height();  // 看板总高
+        $kb.find(".detail").each(function(){
+          var $this = $(this);
+          if(!sh){
+            // 计算分组的头部和底部的高度
+            $this.siblings().each(function(){
+              sh += $(this).height();
+            });
+          }
+          console.log("th=" + th + ",sh=" + sh);
+          $this.css("max-height", (th - sh) + "px");
+        });
+      }).trigger('resize');
+    };
+  </script>
+</body>
+</html>

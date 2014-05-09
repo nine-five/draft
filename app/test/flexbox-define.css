@@ -1,0 +1,96 @@
+/* 
+http://www.w3.org/TR/css3-flexbox/ lastest 20140325
+http://www.w3.org/html/ig/zh/css-flex-1/
+http://c7sky.com/dive-into-flexbox.html 深入了解 Flexbox 伸缩盒模型
+http://bocoup.com/weblog/dive-into-flexbox/
+http://www.w3.org/html/ig/zh/wiki/Css3-flexbox/zh-hans
+
+在线体验： http://the-echoplex.net/flexyboxes/
+*/
+
+/* 伸缩容器的属性 */
+.flexbox {
+	/* 定义伸缩容器：flex|inline-flex
+	 * flex - 容器被渲染为一个块级元素
+	 * inline-flex - 容器被渲染为一个行内元素
+	 */
+	display: flex;	/* Flex layout so items have equal height  */
+
+	/* 伸缩容器的主轴方向：row(默认)|column|row-reverse|column-reverse
+	 * 该值表示伸缩项目根据书写模式的方向布局。默认情况下，伸缩行和文本方向一致：从左至右，从上往下。
+	 * column - 垂直方向
+	 * row - 水平方向
+	*/
+	flex-direction: row;
+
+	/* 主轴上伸缩项目的定位方式：flex-start (默认)|flex-end|center|space-between|space-around
+	 * flex-start - 从主轴起点到终点排列
+	 * flex-end - 从主轴终点到起点排列
+	 * center - 沿主轴方向居中布局
+	*/
+	justify-content: flex-start;
+
+	/* 侧轴上伸缩项目的定位方式：flex-start (默认)|flex-end|center|baseline|stretch
+	 * 是一个和 justify-content 相呼应的属性
+	 * flex-start - 从侧轴起点到终点排列
+	 * flex-end - 从侧轴终点到起点排列
+	 * center - 沿侧轴方向居中布局
+	*/
+	align-items: flex-start;
+
+	/* 控制可以为伸缩容器创建多个伸缩行：nowrap (默认)|wrap|wrap-reverse
+	 * 是一个和 justify-content 相呼应的属性
+	 * nowrap - 有一个伸缩行
+	 * wrap - 在一个伸缩行容不下所有伸缩项目时，伸缩项目会换行到一条新增的伸缩行上。新增的伸缩行根据侧轴的方向添加。
+	*/
+	flex-wrap: nowrap;
+
+	/* 多个伸缩行之间的定位方式：flex-start (默认)|flex-end|center|space-between|space-around
+	 * align-content 会更改 flex-wrap 的行为。它和 align-items 相似，但是不是对齐伸缩项目，它对齐的是伸缩行。
+	*/
+	align-content: nowrap;
+
+
+	/* 伸缩方向与换行：flex-start (默认)|flex-end|center|space-between|space-around
+	 * flex-flow 是 flex-direction 和 flex-wrap 的缩写。
+	 * flex-flow: [flex-direction] [flex-wrap]
+	*/
+	/*flex-flow: row nowrap;*/
+}
+
+/* 伸缩项目的属性 
+一个伸缩项目是一个伸缩容器的子元素。伸缩容器中的文本也被视为一个伸缩项目。
+伸缩项目中内容与普通流一样。举例来说，当一个伸缩项目被设置为浮动，你依然可以在这个伸缩项目中放置一个浮动元素。
+伸缩项目都有一个 主轴长度(Main Size) 和一个 侧轴长度(Cross Size)。主轴长度是伸缩项目在主轴上的尺寸。
+侧轴长度是伸缩项目在侧轴上的尺寸。或者说，一个伸缩项目的宽或高取决于伸缩容器的轴，可能就是它的主轴长度或侧轴长度。
+*/
+.flexitem {
+	/* 显示顺序
+	 * 设置伸缩项目的 order 可以调整它们渲染时的顺序
+	 * 设置其中一个伸缩项目的 order 为 -1，于是它被提前到了其他伸缩项目的最前面。
+	 * order: [number]
+	 */
+	order : -1;	
+
+	/* 外边距
+	 * 在伸缩盒中，一个 "auto" 的 margin 会合并剩余的空间。它可以用来把伸缩项目挤到其他位置。
+	 * 第一个伸缩项目上声明了 margin-right: auto;，导致了所有的剩余空间被合并到那个元素的右边去了
+	 * 使用 margin: auto可以重现经典CSS布局中的圣杯：真垂直居中
+	 */
+	margin : auto;	
+
+	/* 侧轴对齐：stretch (默认)|flex-start|flex-end|center|baseline
+	 * 伸缩项目的 align-self 属性会覆盖该项目的伸缩容器的 align-items 属性。它的值和 align-items 一样
+	*/
+	align-self: stretch;
+
+	/* 伸缩性：[number]|initial|auto|none
+	 * 指定伸缩项目该如何分配主轴上的剩余空间。
+	 * flex 也可以把 flex-grow, flex-shrink, 和 flex-basis 这3个缩写为1个声明：
+	 * flex: [flex-grow] [flex-shrink] [flex-basis]
+	 * initial - 在有剩余空间的情况下不会有任何变化，但是在必要的情况下会被收缩。
+	 * auto - 据主轴自动伸缩以占用所有剩余空间。目前仅在 Opera 12.11 尚有效，在 Chrome 23.0.1271.95 上无效。你可以通过使用 flex: 1; 来达到一样的效果。
+	 * none - 在任何情况都不会发生伸缩。
+	*/
+	flex: 1 1 auto;
+}

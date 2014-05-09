@@ -14,7 +14,7 @@ vlayout()
 	justify-content: flex-start;
 	align-items: flex-start;
 vlayout_item_flex()
-		align-self stretch
+		align-self stretch	// 水平伸缩填满容器
 		flex arguments
 .vlayout
 	vlayout ok
@@ -22,6 +22,29 @@ vlayout_item_flex()
 	vlayout_item_flex auto
 .vlayout > .unflex
 	vlayout_item_flex none
+
+
+/* 弹性盒模型的水平布局 */
+hlayout()
+	/* standard: IE11+, Firefox29+, Chrome34+ */
+	display: inline-flex;	// 水平平铺
+	flex-direction: row;	// 水平平铺
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	overflow-x: auto;	// 水平滚动条
+	overflow-y: hidden;
+hlayout_item_flex()
+		flex arguments
+hlayout_item_flex()
+		align-self flex-start	// 垂直不伸缩
+		flex arguments
+.hlayout
+	hlayout ok
+.hlayout > .autoflex
+	hlayout_item_flex auto
+.hlayout > .unflex
+	hlayout_item_flex none
 
 /* position */
 .relative{position:relative}

@@ -11,15 +11,18 @@
   <link href="../../libs/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
   <link href="../css/kanban.css" rel="stylesheet">
 </head>
-<body class="scrollbar vlayout">
+<body class="vlayout">
   <div class="top unflex">
-    <i class="fa fa-home fa-2x">Draft</i>
+    &nbsp;&nbsp;
+    <a href="#" class="createGroup"><i class="fa fa-plus"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#" class="deleteGroup"><i class="fa fa-minus"></i></a>
   </div>
   <div class="kb autoflex">
-    <div class="cram hscroll">
-      <div class="group vlayout">
+    <div class="cram hlayout hscroll scrollbar">
+      <div class="group vlayout unflex">
         <div class="header unflex"><h2><i class="fa fa-lock"></i> Thinking</h2></div>
         <div class="cards autoflex scrollbar">
+          <div class="card">多到溢出垂直滚动条</div>
           <div class="card"><i class="fa fa-square-o"></i>搭建源码服务器</div>
           <div class="card" draggable="true"><i class="fa fa-check-square-o"></i>注册域名</div>
           <div class="card">看板页面简易版</div>
@@ -38,17 +41,22 @@
           <div class="card">测试测试测试测试</div>
           <div class="card">测试测试测试测试</div>
           <div class="card">测试测试测试测试</div>
-          <div class="card">测试测试测试测试</div>
         </div>
-        <div class="bottom unflex"><a href="#"><i class="fa fa-plus"></i> 新建任务</a></div>
+        <div class="bottom unflex">
+          <a href="#" class="createCard"><i class="fa fa-plus"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="#" class="deleteCard"><i class="fa fa-minus"></i></a>
+        </div>
       </div>
-      <div class="group vlayout">
-        <div class="header unflex"><h2><i class="fa fa-lock"></i> Thinking</h2></div>
-        <div class="cards autoflex">
+      <div class="group vlayout unflex">
+        <div class="header unflex"><h2><i class="fa fa-heart"></i> Thinking</h2></div>
+        <div class="cards autoflex scrollbar">
           <div class="card">测试测试测试测试</div>
           <div class="card">测试测试测试测试</div>
         </div>
-        <div class="bottom unflex"><a href="#"><i class="fa fa-plus"></i> 新建任务</a></div>
+        <div class="bottom unflex">
+          <a href="#" class="createCard"><i class="fa fa-plus"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="#" class="deleteCard"><i class="fa fa-minus"></i></a>
+        </div>
       </div>
     </div>
   </div>

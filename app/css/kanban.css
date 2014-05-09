@@ -27,6 +27,24 @@ body {
   align-self: stretch;
   flex: none;
 }
+.hlayout {
+/* standard: IE11+, Firefox29+, Chrome34+ */
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.hlayout > .autoflex {
+  align-self: flex-start;
+  flex: auto;
+}
+.hlayout > .unflex {
+  align-self: flex-start;
+  flex: none;
+}
 .relative {
   position: relative;
 }
@@ -163,7 +181,6 @@ body {
   border-radius: 0px;
   width: 20em;
   margin-left: 8px;
-  float: left;
 }
 .kb .group > .header {
   min-height: 2em;

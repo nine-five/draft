@@ -1,35 +1,27 @@
 /* 边框圆角 */
 border-radius()
-  -webkit-border-radius: arguments
-  -moz-border-radius: arguments
-  border-radius: arguments
+	-webkit-border-radius: arguments
+	-moz-border-radius: arguments
+	border-radius: arguments
 
 
 /* 弹性盒模型的垂直布局 */
 vlayout()
-	/* webkit */
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-box-pack: top;
-	-webkit-box-align: left;
-	/* moz */
-	display: -moz-box;
-	-moz-box-orient: vertical;
-	-moz-box-pack: top;
-	-moz-box-align: left;
-	/* Standard */
-	display: box;
-	box-orient: vertical;
-	pack: top;
-	align: left;
-box-flex()
-		-webkit-box-flex arguments
-		-moz-box-flex arguments
-		box-flex arguments
+	/* standard: IE11+, Firefox29+, Chrome34+ */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+vlayout_item_flex()
+		align-self stretch
+		flex arguments
 .vlayout
-	vlayout 0
-.vlayout > .flex
-	box-flex 1
+	vlayout ok
+.vlayout > .autoflex
+	vlayout_item_flex auto
+.vlayout > .unflex
+	vlayout_item_flex none
 
 /* position */
 .relative{position:relative}
@@ -57,21 +49,21 @@ box-flex()
 .scrollbar {-webkit-overflow-scrolling:touch}
 .scrollbar::-webkit-scrollbar{height:6px;width:6px}
 .scrollbar::-webkit-scrollbar-button:start:decrement,.scrollbar::-webkit-scrollbar-button:end:increment{
-  background:transparent;display:none
+	background:transparent;display:none
 }
 .scrollbar::-webkit-scrollbar-track-piece{background:#d0d0d0}
 .scrollbar::-webkit-scrollbar-track-piece:vertical:start{
-  border-top-left-radius:2px;border-top-right-radius:2px;border-bottom-right-radius:0;border-bottom-left-radius:0
+	border-top-left-radius:2px;border-top-right-radius:2px;border-bottom-right-radius:0;border-bottom-left-radius:0
 }
 .scrollbar::-webkit-scrollbar-track-piece:vertical:end{
-  border-top-left-radius:0;border-top-right-radius:0;border-bottom-right-radius:5px;border-bottom-left-radius:5px
+	border-top-left-radius:0;border-top-right-radius:0;border-bottom-right-radius:5px;border-bottom-left-radius:5px
 }
 .scrollbar::-webkit-scrollbar-track-piece:horizontal:start{
-  border-top-left-radius:5px;border-top-right-radius:0;border-bottom-right-radius:0;border-bottom-left-radius:5px
+	border-top-left-radius:5px;border-top-right-radius:0;border-bottom-right-radius:0;border-bottom-left-radius:5px
 }
 .scrollbar::-webkit-scrollbar-track-piece:horizontal:end{
-  border-top-left-radius:0;border-top-right-radius:5px;border-bottom-right-radius:5px;border-bottom-left-radius:0
+	border-top-left-radius:0;border-top-right-radius:5px;border-bottom-right-radius:5px;border-bottom-left-radius:0
 }
 .scrollbar::-webkit-scrollbar-thumb:vertical,.scrollbar::-webkit-scrollbar-thumb:horizontal{
-  background:#999;border-radius:2px;display:block;height:50px
+	background:#999;border-radius:2px;display:block;height:50px
 }

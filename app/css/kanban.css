@@ -12,26 +12,20 @@ body {
   font-family: 'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
 }
 .vlayout {
-/* webkit */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-box-pack: top;
-  -webkit-box-align: left;
-/* moz */
-  display: -moz-box;
-  -moz-box-orient: vertical;
-  -moz-box-pack: top;
-  -moz-box-align: left;
-/* Standard */
-  display: box;
-  box-orient: vertical;
-  pack: top;
-  align: left;
+/* standard: IE11+, Firefox29+, Chrome34+ */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
-.vlayout > .flex {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  box-flex: 1;
+.vlayout > .autoflex {
+  align-self: stretch;
+  flex: auto;
+}
+.vlayout > .unflex {
+  align-self: stretch;
+  flex: none;
 }
 .relative {
   position: relative;
